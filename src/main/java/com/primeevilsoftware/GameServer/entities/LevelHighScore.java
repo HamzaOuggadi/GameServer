@@ -20,5 +20,6 @@ public class LevelHighScore {
     private Long currentHighScore;
     private LocalDateTime currentHighScoreDate;
     @ManyToOne
+    @JoinColumn(name = "player_id")
     private Player player;
 }

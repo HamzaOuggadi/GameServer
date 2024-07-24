@@ -66,7 +66,7 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     /**
-     * Used to set and update the player's highs core for a specific level
+     * Used to set or update the player's high score for a specific level
      * @param playerID
      * @param levelName
      * @param newHighScore
@@ -77,6 +77,10 @@ public class PlayerServiceImpl implements PlayerService {
         if (newHighScore > levelHighScore.getCurrentHighScore()) {
             levelHighScore.setPreviousHighScore(levelHighScore.getCurrentHighScore());
             levelHighScore.setCurrentHighScore(newHighScore);
+        }
+        Player player = getPlayerByID(playerID);
+        if (newHighScore > player.getHighestScore()) {
+            player.setHighestScore(newHighScore);
         }
     }
 }

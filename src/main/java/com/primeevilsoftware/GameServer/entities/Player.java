@@ -19,6 +19,6 @@ public class Player {
     private String email;
     private String password;
     private Long highestScore;
-    @OneToMany(mappedBy = "player")
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LevelHighScore> levelHighScores;
 }
