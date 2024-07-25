@@ -6,6 +6,11 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = {"player_id", "level_name"})
+        }
+)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -14,7 +19,6 @@ import java.time.LocalDateTime;
 public class LevelHighScore {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
     private String levelName;
     private Long previousHighScore;
     private Long currentHighScore;
